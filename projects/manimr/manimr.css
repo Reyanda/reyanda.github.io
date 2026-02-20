@@ -516,7 +516,7 @@
   background: var(--surface-hover);
 }
 
-.doc-card-icon { font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
+.doc-card-icon { flex-shrink: 0; }
 .doc-card-title { font-weight: 700; font-size: .875rem; }
 .doc-card-sub { font-size: .78rem; color: var(--text-tertiary); margin-top: 2px; }
 
