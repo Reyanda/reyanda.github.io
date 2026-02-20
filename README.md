@@ -105,7 +105,7 @@ All design tokens are CSS custom properties defined at the top of `css/style.css
 
 | Project | Type | Language | Page |
 |---|---|---|---|
-| [manimR](projects/manimr/) | Open Source | R | `/projects/manimr/` |
+| [manimR](projects/manimr/) | Open Source | R | [`/projects/manimr/`](projects/manimr/) · [reyanda.github.io/manimR](https://reyanda.github.io/manimR/) |
 | DataForge | Open Source | Rust / Python | Coming soon |
 | Reyanda Platform | Proprietary | — | Coming soon |
 | Sentry Vault | Proprietary | Go | Coming soon |
@@ -118,7 +118,7 @@ All design tokens are CSS custom properties defined at the top of `css/style.css
 
 This repository hosts the **website only**. To contribute to individual projects, see their own repositories:
 
-- **manimR** → [github.com/Reyanda/manimR](https://github.com/Reyanda/manimR)
+- **manimR** → [reyanda.github.io/manimR](https://reyanda.github.io/manimR/) · [github.com/Reyanda/manimR](https://github.com/Reyanda/manimR)
 
 To report a bug or suggest an improvement to the website itself, [open an issue](https://github.com/Reyanda/Reyanda/issues).
 
