@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="manimR — Mathematical animation engine for the R language. Create stunning programmatic animations, explainer videos, and visualizations." />
+  <title>manimR — Mathematical Animation for R | Reyanda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="manimr.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../../" class="nav-logo">
+        <span class="logo-mark"></span>
+        <span class="logo-text">Reyanda</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#getting-started">Get Started</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#docs">Docs</a></li>
+      </ul>
+      <a href="https://github.com/Reyanda/manimR" target="_blank" rel="noopener" class="nav-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        Star on GitHub
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#overview" class="mobile-link">Overview</a></li>
+      <li><a href="#features" class="mobile-link">Features</a></li>
+      <li><a href="#getting-started" class="mobile-link">Get Started</a></li>
+      <li><a href="#gallery" class="mobile-link">Gallery</a></li>
+      <li><a href="#docs" class="mobile-link">Docs</a></li>
+      <li><a href="https://github.com/Reyanda/manimR" target="_blank" class="mobile-link">GitHub</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="manimr-hero-section" id="overview">
+    <div class="manimr-hero-bg">
+      <div class="manimr-orb manimr-orb-1"></div>
+      <div class="manimr-orb manimr-orb-2"></div>
+      <div class="manimr-orb manimr-orb-3"></div>
+      <div class="manimr-grid-overlay"></div>
+    </div>
+
+    <div class="container">
+      <a href="../../" class="back-link reveal">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+        Back to Reyanda
+      </a>
+
+      <div class="manimr-hero-grid">
+        <div class="manimr-hero-left">
+          <div class="manimr-logo-badge reveal">
+            <span class="manimr-logo-icon"></span>
+            By Reyanda · Open Source · MIT
+          </div>
+          <h1 class="manimr-hero-title reveal">
+            <span class="manimr-word">manim</span><span class="manimr-word-r gradient-text-violet">R</span>
+          </h1>
+          <p class="manimr-sub-brand reveal">
+            Mathematical animation engine for R.<br />
+            Create stunning programmatic animations,<br class="br-desktop" />
+            videos, and visualizations — in pure R.
+          </p>
+          <div class="manimr-actions reveal">
+            <a href="#getting-started" class="btn btn-violet">Get Started →</a>
+            <a href="https://github.com/Reyanda/manimR" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              View Source
+            </a>
+          </div>
+          <div class="manimr-install-snippet reveal">
+            <div class="install-label">Quick install</div>
+            <div class="install-cmd" id="installCmd">
+              <code>install.packages("manimR")</code>
+              <button class="copy-btn" id="copyBtn" title="Copy to clipboard">
+                <svg id="copyIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="manimr-hero-right reveal">
+          <div class="manimr-preview-window">
+            <div class="manimr-preview-bar">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="preview-title">manimR · fourier_demo.R</span>
+            </div>
+            <div class="manimr-preview-body">
+              <div class="anim-canvas" id="animCanvas">
+                <!-- SVG animation -->
+                <svg class="anim-svg" viewBox="-120 -120 240 240" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <radialGradient id="circleGrad" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.4"/>
+                      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.1"/>
+                    </radialGradient>
+                  </defs>
+                  <!-- Main circle -->
+                  <circle class="anim-circle-bg" cx="0" cy="0" r="80" fill="url(#circleGrad)" stroke="#6366f1" stroke-width="1" stroke-opacity="0.5"/>
+                  <!-- Rotating radius arm -->
+                  <line class="anim-arm" x1="0" y1="0" x2="80" y2="0" stroke="#a855f7" stroke-width="2" stroke-linecap="round">
+                    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
+                  </line>
+                  <!-- Dot at arm tip -->
+                  <circle class="anim-dot" cx="80" cy="0" r="5" fill="#c084fc">
+                    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
+                  </circle>
+                  <!-- Wave trace path -->
+                  <path class="anim-wave" d="" stroke="#06b6d4" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <!-- Labels -->
+                  <text x="-110" y="-105" fill="#5a5a8a" font-family="JetBrains Mono, monospace" font-size="8">f(t) = sin(t)</text>
+                  <text x="-110" y="112" fill="#5a5a8a" font-family="JetBrains Mono, monospace" font-size="8">manimR::Fourier(n=1)</text>
+                </svg>
+              </div>
+              <div class="manimr-preview-code">
+                <pre><code><span class="code-kw">library</span>(manimR)
+
+scene <span class="code-op">&lt;-</span> <span class="code-fn">Scene</span>$new(bg <span class="code-op">=</span> <span class="code-str">"#050510"</span>)
+
+<span class="code-comment"># Fourier decomposition</span>
+f <span class="code-op">&lt;-</span> <span class="code-fn">FourierSeries</span>(
+  harmonics <span class="code-op">=</span> <span class="code-num">8</span>,
+  color     <span class="code-op">=</span> <span class="code-str">"#a855f7"</span>
+)
+
+scene<span class="code-op">$</span><span class="code-fn">play</span>(<span class="code-fn">DrawCircles</span>(f))
+scene<span class="code-op">$</span><span class="code-fn">play</span>(<span class="code-fn">Trace</span>(f, color <span class="code-op">=</span> <span class="code-str">"#06b6d4"</span>))
+scene<span class="code-op">$</span><span class="code-fn">render</span>(<span class="code-str">"fourier.mp4"</span>)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="manimr-stats-bar">
+    <div class="container">
+      <div class="manimr-stats-inner">
+        <div class="manimr-stat-item">
+          <span class="manimr-stat-val">MIT</span>
+          <span class="manimr-stat-key">License</span>
+        </div>
+        <div class="manimr-stat-divider"></div>
+        <div class="manimr-stat-item">
+          <span class="manimr-stat-val">R ≥ 4.0</span>
+          <span class="manimr-stat-key">Requirement</span>
+        </div>
+        <div class="manimr-stat-divider"></div>
+        <div class="manimr-stat-item">
+          <span class="manimr-stat-val">MP4 / GIF / SVG</span>
+          <span class="manimr-stat-key">Output formats</span>
+        </div>
+        <div class="manimr-stat-divider"></div>
+        <div class="manimr-stat-item">
+          <span class="manimr-stat-val">60fps</span>
+          <span class="manimr-stat-key">Smooth rendering</span>
+        </div>
+        <div class="manimr-stat-divider"></div>
+        <div class="manimr-stat-item">
+          <span class="manimr-stat-val">CRAN</span>
+          <span class="manimr-stat-key">Distribution</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="manimr-features" id="features">
+    <div class="container">
+      <div class="section-label reveal">Features</div>
+      <h2 class="section-title reveal">Everything you need<br />to animate mathematics.</h2>
+      <p class="section-sub reveal">Expressive, composable, and fast — manimR brings the power of programmatic animation to the R ecosystem.</p>
+
+      <div class="manimr-features-grid">
+
+        <div class="feature-card feature-card-large reveal">
+          <div class="feature-icon feature-icon-violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21a48.25 48.25 0 01-8.135-.687c-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+          </div>
+          <h3>Scene-based API</h3>
+          <p>Compose animations frame-by-frame using a clean, functional scene API. Chain transforms, play multiple objects simultaneously, and control timing with easing functions — all from R.</p>
+          <div class="feature-code">
+            <pre><code>scene<span class="code-op">$</span><span class="code-fn">play</span>(<span class="code-fn">Create</span>(circle), run_time <span class="code-op">=</span> <span class="code-num">2</span>)
+scene<span class="code-op">$</span><span class="code-fn">play</span>(<span class="code-fn">Rotate</span>(circle, PI), <span class="code-fn">FadeIn</span>(label))</code></pre>
+          </div>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon feature-icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+          </div>
+          <h3>Rich primitives</h3>
+          <p>Circles, polygons, arrows, Bézier curves, LaTeX labels, number lines, coordinate axes, graphs, and 3D surfaces — all animatable.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon feature-icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+          </div>
+          <h3>60fps rendering</h3>
+          <p>Hardware-accelerated via Cairo and FFmpeg. Produce broadcast-quality MP4 at 60fps or optimized GIFs without leaving R.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon feature-icon-violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
+          </div>
+          <h3>LaTeX support</h3>
+          <p>Write equations using standard LaTeX syntax and animate them — transform, morph, or highlight individual terms.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon feature-icon-orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"/></svg>
+          </div>
+          <h3>Easing & timing</h3>
+          <p>Built-in easing curves — linear, ease-in-out, spring, bounce — with per-object and per-scene timing control.</p>
+        </div>
+
+        <div class="feature-card feature-card-large reveal">
+          <div class="feature-icon feature-icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.919 17.919 0 01-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+          </div>
+          <h3>3D scenes</h3>
+          <p>Render three-dimensional mathematical objects — surfaces, vector fields, parametric curves — with full camera orbit, zoom, and lighting control. Powered by an OpenGL-compatible backend.</p>
+          <div class="feature-code">
+            <pre><code>scene3d <span class="code-op">&lt;-</span> <span class="code-fn">Scene3D</span>$new()
+surf <span class="code-op">&lt;-</span> <span class="code-fn">Surface</span>(z <span class="code-op">~</span> sin(x) <span class="code-op">*</span> cos(y))
+scene3d<span class="code-op">$</span><span class="code-fn">play</span>(<span class="code-fn">OrbitCamera</span>(surf, angle <span class="code-op">=</span> TAU))</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GET STARTED -->
+  <section class="manimr-start" id="getting-started">
+    <div class="container">
+      <div class="section-label reveal">Get Started</div>
+      <h2 class="section-title reveal">Zero to animation<br />in five minutes.</h2>
+
+      <div class="steps-grid">
+
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h4>Install</h4>
+          <p>Get manimR from CRAN or install the development version directly from GitHub.</p>
+          <div class="code-window step-code">
+            <div class="code-window-bar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="code-window-title">R console</span>
+            </div>
+            <pre class="code-block"><code><span class="code-comment"># From CRAN</span>
+<span class="code-fn">install.packages</span>(<span class="code-str">"manimR"</span>)
+
+<span class="code-comment"># Dev version</span>
+<span class="code-fn">remotes</span>::<span class="code-fn">install_github</span>(
+  <span class="code-str">"Reyanda/manimR"</span>
+)</code></pre>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <h4>Write your scene</h4>
+          <p>Create a scene, add objects, and describe animations using the fluent R API.</p>
+          <div class="code-window step-code">
+            <div class="code-window-bar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="code-window-title">scene.R</span>
+            </div>
+            <pre class="code-block"><code><span class="code-kw">library</span>(manimR)
+
+scene <span class="code-op">&lt;-</span> <span class="code-fn">Scene</span>$new()
+
+sq <span class="code-op">&lt;-</span> <span class="code-fn">Square</span>(
+  side  <span class="code-op">=</span> <span class="code-num">2</span>,
+  color <span class="code-op">=</span> <span class="code-str">"#6366f1"</span>
+)
+
+scene<span class="code-op">$</span><span class="code-fn">play</span>(
+  <span class="code-fn">Create</span>(sq),
+  <span class="code-fn">Rotate</span>(sq, PI <span class="code-op">/</span> <span class="code-num">4</span>),
+  <span class="code-fn">FadeOut</span>(sq)
+)</code></pre>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <h4>Render</h4>
+          <p>Call <code>render()</code> and choose your output format — MP4, GIF, or transparent WebM.</p>
+          <div class="code-window step-code">
+            <div class="code-window-bar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="code-window-title">render</span>
+            </div>
+            <pre class="code-block"><code><span class="code-comment"># Render at 60fps, 1080p</span>
+scene<span class="code-op">$</span><span class="code-fn">render</span>(
+  output <span class="code-op">=</span> <span class="code-str">"my_anim.mp4"</span>,
+  fps    <span class="code-op">=</span> <span class="code-num">60</span>,
+  width  <span class="code-op">=</span> <span class="code-num">1920</span>,
+  height <span class="code-op">=</span> <span class="code-num">1080</span>
+)
+<span class="code-comment"># → Output: my_anim.mp4 ✓</span></code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="manimr-gallery" id="gallery">
+    <div class="container">
+      <div class="section-label reveal">Gallery</div>
+      <h2 class="section-title reveal">Made with manimR</h2>
+      <p class="section-sub reveal">A taste of what's possible — from proof visualizations to data storytelling.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-item-large reveal">
+          <div class="gallery-visual gv-1">
+            <div class="gv-animated">
+              <svg viewBox="-100 -100 200 200" class="gv-svg">
+                <circle cx="0" cy="0" r="80" fill="none" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+                <circle cx="0" cy="0" r="53" fill="none" stroke="rgba(168,85,247,0.3)" stroke-width="1"/>
+                <circle cx="0" cy="0" r="26" fill="none" stroke="rgba(6,182,212,0.3)" stroke-width="1"/>
+                <!-- Animated lines -->
+                <line x1="0" y1="0" x2="80" y2="0" stroke="#6366f1" stroke-width="1.5" opacity="0.7">
+                  <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/>
+                </line>
+                <line x1="0" y1="0" x2="53" y2="0" stroke="#a855f7" stroke-width="1.5" opacity="0.7">
+                  <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="1.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="0" y1="0" x2="26" y2="0" stroke="#06b6d4" stroke-width="1.5" opacity="0.7">
+                  <animateTransform attributeName="transform" type="rotate" from="0" to="720" dur="1s" repeatCount="indefinite"/>
+                </line>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-caption">
+            <span class="gallery-tag">Fourier Decomposition</span>
+            <p>Visualizing harmonic components of a periodic signal</p>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-visual gv-2">
+            <div class="gv-animated">
+              <svg viewBox="-100 -80 200 160" class="gv-svg">
+                <!-- Axes -->
+                <line x1="-90" y1="0" x2="90" y2="0" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+                <line x1="0" y1="-70" x2="0" y2="70" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+                <!-- Sine wave -->
+                <path d="M -88,-0 Q-66,-55 -44,0 Q-22,55 0,0 Q22,-55 44,0 Q66,55 88,0"
+                      fill="none" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round">
+                  <animate attributeName="d"
+                    values="M -88,0 Q-66,-55 -44,0 Q-22,55 0,0 Q22,-55 44,0 Q66,55 88,0;
+                            M -88,0 Q-66,55 -44,0 Q-22,-55 0,0 Q22,55 44,0 Q66,-55 88,0;
+                            M -88,0 Q-66,-55 -44,0 Q-22,55 0,0 Q22,-55 44,0 Q66,55 88,0"
+                    dur="3s" repeatCount="indefinite"/>
+                </path>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-caption">
+            <span class="gallery-tag">Wave Functions</span>
+            <p>Animated sine / cosine visualization</p>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-visual gv-3">
+            <div class="gv-animated">
+              <svg viewBox="-100 -100 200 200" class="gv-svg">
+                <polygon points="0,-80 69.3,40 -69.3,40"
+                         fill="rgba(99,102,241,0.1)"
+                         stroke="#6366f1" stroke-width="1.5">
+                  <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="6s" repeatCount="indefinite"/>
+                </polygon>
+                <polygon points="0,-60 51.96,30 -51.96,30"
+                         fill="rgba(168,85,247,0.1)"
+                         stroke="#a855f7" stroke-width="1.5">
+                  <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="4s" repeatCount="indefinite"/>
+                </polygon>
+                <circle cx="0" cy="0" r="3" fill="#c084fc"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-caption">
+            <span class="gallery-tag">Geometry</span>
+            <p>Rotating polygon transforms</p>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-visual gv-4">
+            <div class="gv-animated">
+              <svg viewBox="0 0 200 160" class="gv-svg">
+                <!-- Bar chart animation -->
+                <rect x="15" y="130" width="25" height="0" fill="#6366f1" rx="3">
+                  <animate attributeName="height" values="0;80;80;0;0" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1; 0 0 0 0; 0 0 0 0; 0.4 0 0.2 1"/>
+                  <animate attributeName="y" values="130;50;50;130;130" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1; 0 0 0 0; 0 0 0 0; 0.4 0 0.2 1"/>
+                </rect>
+                <rect x="55" y="130" width="25" height="0" fill="#a855f7" rx="3">
+                  <animate attributeName="height" values="0;0;110;110;0" dur="4s" repeatCount="indefinite" begin="0.3s" calcMode="spline" keySplines="0 0 0 0; 0.4 0 0.2 1; 0 0 0 0; 0.4 0 0.2 1"/>
+                  <animate attributeName="y" values="130;130;20;20;130" dur="4s" repeatCount="indefinite" begin="0.3s" calcMode="spline" keySplines="0 0 0 0; 0.4 0 0.2 1; 0 0 0 0; 0.4 0 0.2 1"/>
+                </rect>
+                <rect x="95" y="130" width="25" height="0" fill="#06b6d4" rx="3">
+                  <animate attributeName="height" values="0;0;60;60;0" dur="4s" repeatCount="indefinite" begin="0.6s" calcMode="spline" keySplines="0 0 0 0; 0.4 0 0.2 1; 0 0 0 0; 0.4 0 0.2 1"/>
+                  <animate attributeName="y" values="130;130;70;70;130" dur="4s" repeatCount="indefinite" begin="0.6s" calcMode="spline" keySplines="0 0 0 0; 0.4 0 0.2 1; 0 0 0 0; 0.4 0 0.2 1"/>
+                </rect>
+                <rect x="135" y="130" width="25" height="0" fill="#22c55e" rx="3">
+                  <animate attributeName="height" values="0;0;95;95;0" dur="4s" repeatCount="indefinite" begin="0.9s" calcMode="spline" keySplines="0 0 0 0; 0.4 0 0.2 1; 0 0 0 0; 0.4 0 0.2 1"/>
+                  <animate attributeName="y" values="130;130;35;35;130" dur="4s" repeatCount="indefinite" begin="0.9s" calcMode="spline" keySplines="0 0 0 0; 0.4 0 0.2 1; 0 0 0 0; 0.4 0 0.2 1"/>
+                </rect>
+                <line x1="10" y1="130" x2="175" y2="130" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-caption">
+            <span class="gallery-tag">Data Viz</span>
+            <p>Animated statistical charts</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCS CTA -->
+  <section class="manimr-docs" id="docs">
+    <div class="container">
+      <div class="docs-inner reveal">
+        <div class="docs-text">
+          <div class="section-label">Documentation</div>
+          <h2 class="section-title">Everything documented.<br />Nothing assumed.</h2>
+          <p>Full API reference, tutorials from first animation to advanced 3D scenes, and a cookbook of ready-made examples — all on GitHub.</p>
+          <div class="docs-actions">
+            <a href="https://github.com/Reyanda/manimR#readme" target="_blank" rel="noopener" class="btn btn-violet">Read the Docs</a>
+            <a href="https://github.com/Reyanda/manimR/tree/main/examples" target="_blank" rel="noopener" class="btn btn-ghost">Browse Examples</a>
+          </div>
+        </div>
+        <div class="docs-cards">
+          <a href="https://github.com/Reyanda/manimR#api-reference" target="_blank" class="doc-card">
+            <div class="doc-card-icon">📖</div>
+            <div>
+              <div class="doc-card-title">API Reference</div>
+              <div class="doc-card-sub">Full function & class docs</div>
+            </div>
+          </a>
+          <a href="https://github.com/Reyanda/manimR/tree/main/vignettes" target="_blank" class="doc-card">
+            <div class="doc-card-icon">🎓</div>
+            <div>
+              <div class="doc-card-title">Tutorials</div>
+              <div class="doc-card-sub">Step-by-step guides</div>
+            </div>
+          </a>
+          <a href="https://github.com/Reyanda/manimR/blob/main/CHANGELOG.md" target="_blank" class="doc-card">
+            <div class="doc-card-icon">📋</div>
+            <div>
+              <div class="doc-card-title">Changelog</div>
+              <div class="doc-card-sub">Release notes & updates</div>
+            </div>
+          </a>
+          <a href="https://github.com/Reyanda/manimR/issues" target="_blank" class="doc-card">
+            <div class="doc-card-icon">💬</div>
+            <div>
+              <div class="doc-card-title">Community</div>
+              <div class="doc-card-sub">Issues & discussions</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (manimR) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="manimr-footer-inner">
+        <div class="manimr-footer-brand">
+          <div class="manimr-footer-logo">
+            <span class="logo-mark"></span>
+            <span class="logo-text">Reyanda</span>
+            <span class="footer-slash">/</span>
+            <span class="logo-text" style="color:var(--accent-2)">manimR</span>
+          </div>
+          <p>Mathematical animation engine for R — open source, MIT licensed.</p>
+        </div>
+        <div class="footer-links-row">
+          <a href="../../">← Reyanda Home</a>
+          <a href="https://github.com/Reyanda/manimR" target="_blank">GitHub</a>
+          <a href="https://github.com/Reyanda/manimR#readme" target="_blank">Docs</a>
+          <a href="https://github.com/Reyanda/manimR/issues" target="_blank">Issues</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Reyanda. manimR is MIT licensed.</p>
+        <p>Built with care — in the open.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="manimr.js"></script>
+</body>
+</html>

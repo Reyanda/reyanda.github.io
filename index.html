@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Reyanda — A technology company building the future with open source and proprietary software." />
+  <title>Reyanda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="logo-mark"></span>
+        <span class="logo-text">Reyanda</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#open-source">Open Source</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="https://github.com/Reyanda" target="_blank" rel="noopener" class="nav-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#philosophy" class="mobile-link">Philosophy</a></li>
+      <li><a href="#projects" class="mobile-link">Projects</a></li>
+      <li><a href="#open-source" class="mobile-link">Open Source</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+      <li><a href="https://github.com/Reyanda" target="_blank" class="mobile-link">GitHub</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        Hybrid · Open & Proprietary
+      </div>
+      <h1 class="hero-title reveal">
+        Software that
+        <br />
+        <span class="gradient-text">shapes tomorrow</span>
+      </h1>
+      <p class="hero-sub reveal">
+        Reyanda builds tools, libraries, and platforms that push the boundaries<br class="br-desktop" />
+        of what technology can do — releasing them openly or bringing them<br class="br-desktop" />
+        to market where impact demands it.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#projects" class="btn btn-primary">Explore Projects</a>
+        <a href="#philosophy" class="btn btn-ghost">Our Approach</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy" id="philosophy">
+    <div class="container">
+      <div class="section-label reveal">Philosophy</div>
+      <h2 class="section-title reveal">Built different.<br />Released deliberately.</h2>
+      <p class="section-sub reveal">
+        We believe the best technology reaches people through the right channel —
+        not every tool belongs in every model.
+      </p>
+      <div class="philosophy-grid">
+        <div class="phil-card reveal">
+          <div class="phil-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.919 17.919 0 01-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+          </div>
+          <h3>Open Source First</h3>
+          <p>Core scientific and developer tools — libraries, frameworks, compilers — are open sourced. The community drives them forward; we provide the direction.</p>
+          <div class="phil-tag oss">OSS</div>
+        </div>
+        <div class="phil-card reveal">
+          <div class="phil-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+          </div>
+          <h3>Proprietary Excellence</h3>
+          <p>Products that require sustained investment, infrastructure, and guarantees are developed and licensed commercially — letting us reinvest in the next frontier.</p>
+          <div class="phil-tag pro">PRO</div>
+        </div>
+        <div class="phil-card reveal">
+          <div class="phil-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+          </div>
+          <h3>Hybrid Velocity</h3>
+          <p>The two models reinforce each other. Open source generates trust and talent; proprietary products generate resources. Together they compound.</p>
+          <div class="phil-tag hybrid">HYBRID</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-label reveal">Projects</div>
+      <h2 class="section-title reveal">What we're building</h2>
+      <p class="section-sub reveal">Each project is crafted with intentionality — purpose-built tools for real problems.</p>
+
+      <!-- Featured: manimR -->
+      <div class="project-featured reveal">
+        <div class="project-featured-content">
+          <div class="project-tags">
+            <span class="tag tag-oss">Open Source</span>
+            <span class="tag tag-lang">R</span>
+          </div>
+          <h3 class="project-featured-title">manimR</h3>
+          <p class="project-featured-desc">
+            Mathematical animation engine for R. Create stunning programmatic animations,
+            visualizations, and explainer videos using the elegance of R — powered by the
+            philosophy of manim, rebuilt from the ground up for the R ecosystem.
+          </p>
+          <div class="project-featured-stats">
+            <div class="stat">
+              <span class="stat-value">R</span>
+              <span class="stat-label">Language</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">MIT</span>
+              <span class="stat-label">License</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">OSS</span>
+              <span class="stat-label">Model</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="projects/manimr/" class="btn btn-primary">Visit manimR →</a>
+            <a href="https://github.com/Reyanda/manimR" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              Source Code
+            </a>
+          </div>
+        </div>
+        <div class="project-featured-visual">
+          <div class="code-window">
+            <div class="code-window-bar">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="code-window-title">manimR demo</span>
+            </div>
+            <pre class="code-block"><code><span class="code-comment"># Animate a Fourier series</span>
+<span class="code-kw">library</span>(manimR)
+
+scene <span class="code-op">&lt;-</span> <span class="code-fn">Scene</span>$new()
+
+<span class="code-comment"># Build a circle object</span>
+circle <span class="code-op">&lt;-</span> <span class="code-fn">Circle</span>(
+  radius <span class="code-op">=</span> <span class="code-num">2</span>,
+  color  <span class="code-op">=</span> <span class="code-str">"#6366f1"</span>
+)
+
+<span class="code-comment"># Animate creation</span>
+scene<span class="code-op">$</span><span class="code-fn">play</span>(
+  <span class="code-fn">Create</span>(circle),
+  <span class="code-fn">Rotate</span>(circle, angle <span class="code-op">=</span> PI)
+)
+
+scene<span class="code-op">$</span><span class="code-fn">render</span>(<span class="code-str">"output.mp4"</span>)</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Projects Grid -->
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <div class="project-card-header">
+            <div class="project-card-icon">⚙️</div>
+            <div class="project-card-tags">
+              <span class="tag tag-pro">Proprietary</span>
+            </div>
+          </div>
+          <h4>Reyanda Platform</h4>
+          <p>Enterprise infrastructure platform for deploying and orchestrating hybrid workloads at scale — with built-in observability and policy enforcement.</p>
+          <div class="project-card-footer">
+            <span class="lang-dot" style="background:#f97316"></span> Platform
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-card-header">
+            <div class="project-card-icon">📊</div>
+            <div class="project-card-tags">
+              <span class="tag tag-oss">Open Source</span>
+            </div>
+          </div>
+          <h4>DataForge</h4>
+          <p>A blazing-fast data transformation toolkit with a declarative pipeline API. Handles streaming, batch, and incremental workloads without compromise.</p>
+          <div class="project-card-footer">
+            <span class="lang-dot" style="background:#3b82f6"></span> Rust / Python
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-card-header">
+            <div class="project-card-icon">🔐</div>
+            <div class="project-card-tags">
+              <span class="tag tag-pro">Proprietary</span>
+            </div>
+          </div>
+          <h4>Sentry Vault</h4>
+          <p>Zero-trust secret management and credential rotation engine. Designed for regulated environments with audit trails and hardware key support.</p>
+          <div class="project-card-footer">
+            <span class="lang-dot" style="background:#22c55e"></span> Go
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-card-header">
+            <div class="project-card-icon">🧬</div>
+            <div class="project-card-tags">
+              <span class="tag tag-oss">Open Source</span>
+            </div>
+          </div>
+          <h4>BioKit R</h4>
+          <p>Bioinformatics toolkit for R — sequence analysis, genomic visualization, and statistical inference pipelines, all in a single composable package.</p>
+          <div class="project-card-footer">
+            <span class="lang-dot" style="background:#a855f7"></span> R
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-card-header">
+            <div class="project-card-icon">🌐</div>
+            <div class="project-card-tags">
+              <span class="tag tag-hybrid">Hybrid</span>
+            </div>
+          </div>
+          <h4>EdgeMesh</h4>
+          <p>Open-core service mesh for edge computing — free for self-hosted, with a managed tier for globally distributed fleets requiring sub-5ms routing.</p>
+          <div class="project-card-footer">
+            <span class="lang-dot" style="background:#06b6d4"></span> Go / Rust
+          </div>
+        </div>
+
+        <div class="project-card reveal project-card-coming">
+          <div class="project-card-header">
+            <div class="project-card-icon">✦</div>
+            <div class="project-card-tags">
+              <span class="tag tag-soon">Coming Soon</span>
+            </div>
+          </div>
+          <h4>Next Release</h4>
+          <p>Something new is taking shape in our labs. Follow us on GitHub to be the first to know when we open the doors.</p>
+          <div class="project-card-footer">
+            <a href="https://github.com/Reyanda" target="_blank" rel="noopener">Follow on GitHub →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN SOURCE SECTION -->
+  <section class="oss-section" id="open-source">
+    <div class="container">
+      <div class="oss-inner">
+        <div class="oss-text reveal">
+          <div class="section-label">Open Source</div>
+          <h2 class="section-title">We give back.<br />Constantly.</h2>
+          <p>Open source isn't a marketing strategy — it's how we believe software should be built. Our OSS projects are fully maintained, documented, and welcoming to contributors at every level.</p>
+          <div class="oss-stats">
+            <div class="oss-stat">
+              <span class="oss-stat-number" data-count="12">0</span>
+              <span class="oss-stat-label">Public repos</span>
+            </div>
+            <div class="oss-stat">
+              <span class="oss-stat-number" data-count="3">0</span>
+              <span class="oss-stat-label">Languages</span>
+            </div>
+            <div class="oss-stat">
+              <span class="oss-stat-number" data-count="100">0</span>
+              <span class="oss-stat-label">% MIT/Apache</span>
+            </div>
+          </div>
+          <a href="https://github.com/Reyanda" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub</a>
+        </div>
+        <div class="oss-visual reveal">
+          <div class="contrib-grid">
+            <div class="contrib-row" id="contribGrid"></div>
+          </div>
+          <p class="contrib-label">Open source activity</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="section-label reveal">Contact</div>
+        <h2 class="section-title reveal">Let's build<br />something great.</h2>
+        <p class="section-sub reveal">Interested in partnering, contributing, or just want to say hello? We'd love to hear from you.</p>
+        <div class="contact-links reveal">
+          <a href="https://github.com/Reyanda" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-title">GitHub</div>
+              <div class="contact-card-sub">@Reyanda</div>
+            </div>
+          </a>
+          <a href="mailto:hello@reyanda.dev" class="contact-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+            </div>
+            <div>
+              <div class="contact-card-title">Email</div>
+              <div class="contact-card-sub">hello@reyanda.dev</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo">
+            <span class="logo-mark"></span>
+            <span class="logo-text">Reyanda</span>
+          </a>
+          <p>A technology company with a hybrid approach — open where it matters, proprietary where it counts.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Projects</h5>
+            <ul>
+              <li><a href="projects/manimr/">manimR</a></li>
+              <li><a href="#">DataForge</a></li>
+              <li><a href="#">BioKit R</a></li>
+              <li><a href="#">EdgeMesh</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#philosophy">Philosophy</a></li>
+              <li><a href="#open-source">Open Source</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Community</h5>
+            <ul>
+              <li><a href="https://github.com/Reyanda" target="_blank" rel="noopener">GitHub</a></li>
+              <li><a href="https://github.com/Reyanda/manimR" target="_blank" rel="noopener">manimR Repo</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Reyanda. All rights reserved.</p>
+        <p>Built with care — in the open.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
