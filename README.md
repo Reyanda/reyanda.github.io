@@ -1,11 +1,13 @@
 # Reyanda — Company Website
 
-[![Deploy to GitHub Pages](https://github.com/Reyanda/Reyanda/actions/workflows/pages.yml/badge.svg)](https://github.com/Reyanda/Reyanda/actions/workflows/pages.yml)
+[![Deploy to GitHub Pages](https://github.com/Reyanda/reyanda.github.io/actions/workflows/pages.yml/badge.svg)](https://github.com/Reyanda/reyanda.github.io/actions/workflows/pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 The official website for **Reyanda** — a technology company with a hybrid approach to software: open source where community drives value, proprietary where sustained investment and guarantees are required.
 
-**Live site:** https://reyanda.github.io/Reyanda/
+**Live site:** https://reyanda.github.io
+
+> **Note:** This repo must be named `reyanda.github.io` for GitHub Pages to serve it at the root org domain. Rename via **Settings → Rename repository**.
 
 ---
 
@@ -14,7 +16,7 @@ The official website for **Reyanda** — a technology company with a hybrid appr
 | Route | Description |
 |---|---|
 | `/` | Main landing page — philosophy, projects, open source section |
-| `/projects/manimr/` | manimR dedicated subpage — features, get started, gallery |
+| `/projects/manimr/` | manimR subpage — links through to [reyanda.github.io/manimR](https://reyanda.github.io/manimR/) (separate repo) |
 
 ---
 
