@@ -103,123 +103,84 @@
 
     <div class="footer">Your files stay in your sandbox.</div>
 
-    <!-- Google Identity Services -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
     (function() {
         'use strict';
         var AUTH_KEY = 'reyanda_user';
+        // Render backend that owns the registered OAuth redirect URI.
+        // Server-side flow → the launcher origin needs no JS-origin whitelisting.
+        var API_BASE = 'https://resource-shrimp.onrender.com';
         var loginBtn = document.getElementById('loginBtn');
-        var gisBtn = document.getElementById('gisBtn');
-        var userInfo = document.getElementById('userInfo');
         var appsView = document.getElementById('appsView');
         var loginView = document.getElementById('loginView');
 
-        // Check if already logged in
-        var stored = localStorage.getItem(AUTH_KEY);
-        if (stored) {
-            try {
-                var user = JSON.parse(stored);
-                showApps(user);
-            } catch(e) { localStorage.removeItem(AUTH_KEY); }
-        }
-
-        var CLIENT_ID = '100146952222-ia29gb3v6mtg5s1f08k01sf63t241ll2.apps.googleusercontent.com';
-        var gisReady = false;
-
         function showMsg(msg, ok) {
             var el = document.getElementById('loginMsg');
-            if (el) { el.textContent = msg; el.style.color = ok ? '#1a7f37' : '#c0392b'; }
-        }
-
-        // Initialize Google Identity Services (self-diagnosing)
-        function initGoogle(attempts) {
-            attempts = attempts || 0;
-            if (typeof google === 'undefined' || !google.accounts) {
-                if (attempts > 40) {
-                    showMsg('Google Sign-In script did not load — a privacy/ad blocker or your network may be blocking accounts.google.com. Allow it for this page and reload.');
-                    return;
-                }
-                setTimeout(function () { initGoogle(attempts + 1); }, 200);
-                return;
-            }
-            try {
-                google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleCredentialResponse });
-                google.accounts.id.renderButton(gisBtn, { theme: 'outline', size: 'large', text: 'signin_with', width: 280 });
-                gisReady = true;
-                // Auto-diagnose via One Tap: surface exactly why sign-in can't show
-                google.accounts.id.prompt(function (n) {
-                    if (n && n.isNotDisplayed && n.isNotDisplayed()) {
-                        var r = n.getNotDisplayedReason();
-                        if (r === 'unregistered_origin') {
-                            showMsg('Origin not authorized — add  https://reyanda.github.io  to "Authorized JavaScript origins" for this OAuth client in Google Cloud Console, then reload.');
-                        } else if (r === 'invalid_client' || r === 'missing_client_id') {
-                            showMsg('OAuth client problem (' + r + ') — check the client ID in Google Cloud Console.');
-                        } else {
-                            showMsg('One Tap not shown (' + r + '). Use the Sign in button.', true);
-                        }
-                    }
-                });
-            } catch (e) {
-                showMsg('Sign-In error: ' + (e && e.message ? e.message : e));
-            }
-        }
-
-        // Custom button is a manual trigger (works even if One Tap is suppressed)
-        loginBtn.addEventListener('click', function () {
-            if (gisReady && typeof google !== 'undefined' && google.accounts) {
-                google.accounts.id.prompt();
-            } else {
-                showMsg('Google Sign-In is not ready yet — wait a moment, or check for a blocker.');
-            }
-        });
-
-        function handleCredentialResponse(response) {
-            // Decode the JWT to get user info
-            var payload = JSON.parse(atob(response.credential.split('.')[1]));
-            var user = {
-                name: payload.name,
-                email: payload.email,
-                picture: payload.picture,
-                sub: payload.sub
-            };
-            localStorage.setItem(AUTH_KEY, JSON.stringify(user));
-            showApps(user);
+            if (el) { el.textContent = msg || ''; el.style.color = ok ? '#1a7f37' : '#c0392b'; }
         }
 
         function showApps(user) {
             loginView.style.display = 'none';
             appsView.classList.add('active');
-            // Also store for child apps to read
             localStorage.setItem(AUTH_KEY, JSON.stringify(user));
         }
+
+        // 1) Returning from Google via the Render callback? Read the profile
+        //    from the URL fragment (never sent to a server), then clean the URL.
+        (function consumeAuthFragment() {
+            var h = location.hash || '';
+            if (h.indexOf('rs_auth=') !== -1) {
+                try {
+                    var raw = h.split('rs_auth=')[1].split('&')[0];
+                    raw = raw.replace(/-/g, '+').replace(/_/g, '/');
+                    while (raw.length % 4) { raw += '='; }
+                    var user = JSON.parse(decodeURIComponent(escape(atob(raw))));
+                    history.replaceState(null, '', location.pathname);
+                    showApps(user);
+                    return;
+                } catch (e) { /* fall through to error/login */ }
+            }
+            if (h.indexOf('rs_auth_error=') !== -1) {
+                var reason = h.split('rs_auth_error=')[1].split('&')[0];
+                history.replaceState(null, '', location.pathname);
+                if (reason === 'not_configured') {
+                    showMsg('Google sign-in is not configured on the server yet. Use your email below.');
+                } else {
+                    showMsg('Google sign-in did not complete (' + reason + '). Try again, or use your email below.');
+                }
+            }
+        })();
+
+        // 2) Already signed in this browser?
+        var stored = localStorage.getItem(AUTH_KEY);
+        if (stored) {
+            try { showApps(JSON.parse(stored)); } catch (e) { localStorage.removeItem(AUTH_KEY); }
+        }
+
+        // 3) Google sign-in → hand off to the Render server-side OAuth flow.
+        function startGoogle() {
+            var ret = location.origin + location.pathname;
+            window.location.href = API_BASE + '/api/auth/google/login?return=' + encodeURIComponent(ret);
+        }
+        loginBtn.addEventListener('click', startGoogle);
 
         // Logout
         document.getElementById('logoutBtn').addEventListener('click', function() {
             localStorage.removeItem(AUTH_KEY);
-            if (typeof google !== 'undefined' && google.accounts) {
-                google.accounts.id.disableAutoSelect();
-            }
             loginView.style.display = '';
             appsView.classList.remove('active');
-            loginBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Sign in with Google';
-            loginBtn.style.display = '';
-        }
+        });
 
-        // Email sign-in — works with zero external config
+        // 4) Email sign-in — works with zero external config.
         function emailContinue() {
             var email = (document.getElementById('emailInput').value || '').trim();
             if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { showMsg('Enter a valid email to continue.'); return; }
-            var user = { name: email.split('@')[0], email: email, picture: '', sub: 'email:' + email };
-            localStorage.setItem(AUTH_KEY, JSON.stringify(user));
-            showApps(user);
+            showApps({ name: email.split('@')[0], email: email, picture: '', sub: 'email:' + email });
         }
         document.getElementById('continueBtn').addEventListener('click', emailContinue);
         document.getElementById('emailInput').addEventListener('keydown', function (e) {
             if (e.key === 'Enter') emailContinue();
         });
-
-        initGoogle();
     })();
     </script>
 </body>
