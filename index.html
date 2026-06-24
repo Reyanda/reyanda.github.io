@@ -134,6 +134,21 @@
             localStorage.setItem(AUTH_KEY, JSON.stringify(user));
         }
 
+        // Report each sign-in to the Open Canvas Studio backend so the shared
+        // admin console can see Reyanda users (best-effort; ignored if the
+        // backend's user store is disabled). Only on a fresh login, not restore.
+        var OCS_API = 'https://open-canvas-studio-api.onrender.com';
+        function reportSignin(user) {
+            if (!user || !user.email) return;
+            try {
+                fetch(OCS_API + '/track/signin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ provider: 'launcher', id: 'launcher:' + user.email, email: user.email, name: user.name || '' })
+                }).catch(function () {});
+            } catch (e) {}
+        }
+
         // 1) Returning from Google via the Render callback? Read the profile
         //    from the URL fragment (never sent to a server), then clean the URL.
         (function consumeAuthFragment() {
@@ -146,6 +161,7 @@
                     var user = JSON.parse(decodeURIComponent(escape(atob(raw))));
                     history.replaceState(null, '', location.pathname);
                     showApps(user);
+                    reportSignin(user);
                     return;
                 } catch (e) { /* fall through to error/login */ }
             }
@@ -184,7 +200,9 @@
         function emailContinue() {
             var email = (document.getElementById('emailInput').value || '').trim();
             if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { showMsg('Enter a valid email to continue.'); return; }
-            showApps({ name: email.split('@')[0], email: email, picture: '', sub: 'email:' + email });
+            var user = { name: email.split('@')[0], email: email, picture: '', sub: 'email:' + email };
+            showApps(user);
+            reportSignin(user);
         }
         document.getElementById('continueBtn').addEventListener('click', emailContinue);
         document.getElementById('emailInput').addEventListener('keydown', function (e) {
