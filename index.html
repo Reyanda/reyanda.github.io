@@ -50,6 +50,7 @@
         .footer { margin-top: 48px; font-size: 12px; color: var(--muted); }
     </style>
     <script src="./shared/theme.js?v=2"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <!-- Login state -->
@@ -182,12 +183,35 @@
             try { showApps(JSON.parse(stored)); } catch (e) { localStorage.removeItem(AUTH_KEY); }
         }
 
-        // 3) Google sign-in → hand off to the Render server-side OAuth flow.
-        function startGoogle() {
-            var ret = location.origin + location.pathname;
-            window.location.href = API_BASE + '/api/auth/google/login?return=' + encodeURIComponent(ret);
+        // 3) Google sign-in — client-side Google Identity Services using the
+        //    Open Canvas Studio OAuth client, which already authorizes this
+        //    origin (reyanda.github.io). No server secret required.
+        var GOOGLE_CLIENT_ID = '100146952222-eg9u582bdtnlnac12d9lonc8o9t7qju8.apps.googleusercontent.com';
+        function onGoogleCredential(resp) {
+            try {
+                var b = resp.credential.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+                while (b.length % 4) b += '=';
+                var p = JSON.parse(decodeURIComponent(escape(atob(b))));
+                var user = { name: p.name || (p.email || '').split('@')[0], email: p.email || '', picture: p.picture || '', sub: p.sub || '' };
+                showApps(user);
+                reportSignin(user);
+            } catch (e) { showMsg('Google sign-in failed — use your email instead.'); }
         }
-        loginBtn.addEventListener('click', startGoogle);
+        function initGoogle(n) {
+            n = n || 0;
+            if (typeof google === 'undefined' || !google.accounts || !google.accounts.id) {
+                if (n > 60) return;            // gave up; email sign-in still works
+                setTimeout(function () { initGoogle(n + 1); }, 150);
+                return;
+            }
+            try {
+                google.accounts.id.initialize({ client_id: GOOGLE_CLIENT_ID, callback: onGoogleCredential });
+                google.accounts.id.renderButton(document.getElementById('gisBtn'),
+                    { theme: 'filled_black', size: 'large', text: 'signin_with', shape: 'pill', width: 280 });
+                loginBtn.style.display = 'none';   // official Google button replaces the placeholder
+            } catch (e) { /* leave the email path intact */ }
+        }
+        initGoogle();
 
         // Logout
         document.getElementById('logoutBtn').addEventListener('click', function() {
