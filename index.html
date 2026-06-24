@@ -65,6 +65,7 @@
 
         <!-- Google Identity Services renders the real sign-in button here -->
         <div id="gisBtn" style="display:flex;justify-content:center"></div>
+        <div id="loginMsg" style="margin:14px auto 0;font-size:13px;line-height:1.5;color:#c0392b;max-width:360px"></div>
 
         <div class="user-info" id="userInfo">
             <img class="user-avatar" id="userAvatar" src="" alt="">
@@ -117,23 +118,55 @@
             } catch(e) { localStorage.removeItem(AUTH_KEY); }
         }
 
-        // Initialize Google Identity Services
-        function initGoogle() {
+        var CLIENT_ID = '100146952222-ia29gb3v6mtg5s1f08k01sf63t241ll2.apps.googleusercontent.com';
+        var gisReady = false;
+
+        function showMsg(msg, ok) {
+            var el = document.getElementById('loginMsg');
+            if (el) { el.textContent = msg; el.style.color = ok ? '#1a7f37' : '#c0392b'; }
+        }
+
+        // Initialize Google Identity Services (self-diagnosing)
+        function initGoogle(attempts) {
+            attempts = attempts || 0;
             if (typeof google === 'undefined' || !google.accounts) {
-                setTimeout(initGoogle, 200);
+                if (attempts > 40) {
+                    showMsg('Google Sign-In script did not load — a privacy/ad blocker or your network may be blocking accounts.google.com. Allow it for this page and reload.');
+                    return;
+                }
+                setTimeout(function () { initGoogle(attempts + 1); }, 200);
                 return;
             }
-            google.accounts.id.initialize({
-                // REPLACE with your Google OAuth Client ID from console.cloud.google.com
-                client_id: '100146952222-ia29gb3v6mtg5s1f08k01sf63t241ll2.apps.googleusercontent.com',
-                callback: handleCredentialResponse
-            });
-            google.accounts.id.renderButton(
-                gisBtn,
-                { theme: 'outline', size: 'large', text: 'signin_with', width: 280 }
-            );
-            loginBtn.style.display = 'none';
+            try {
+                google.accounts.id.initialize({ client_id: CLIENT_ID, callback: handleCredentialResponse });
+                google.accounts.id.renderButton(gisBtn, { theme: 'outline', size: 'large', text: 'signin_with', width: 280 });
+                gisReady = true;
+                // Auto-diagnose via One Tap: surface exactly why sign-in can't show
+                google.accounts.id.prompt(function (n) {
+                    if (n && n.isNotDisplayed && n.isNotDisplayed()) {
+                        var r = n.getNotDisplayedReason();
+                        if (r === 'unregistered_origin') {
+                            showMsg('Origin not authorized — add  https://reyanda.github.io  to "Authorized JavaScript origins" for this OAuth client in Google Cloud Console, then reload.');
+                        } else if (r === 'invalid_client' || r === 'missing_client_id') {
+                            showMsg('OAuth client problem (' + r + ') — check the client ID in Google Cloud Console.');
+                        } else {
+                            showMsg('One Tap not shown (' + r + '). Use the Sign in button.', true);
+                        }
+                    }
+                });
+            } catch (e) {
+                showMsg('Sign-In error: ' + (e && e.message ? e.message : e));
+            }
         }
+
+        // Custom button is a manual trigger (works even if One Tap is suppressed)
+        loginBtn.addEventListener('click', function () {
+            if (gisReady && typeof google !== 'undefined' && google.accounts) {
+                google.accounts.id.prompt();
+            } else {
+                showMsg('Google Sign-In is not ready yet — wait a moment, or check for a blocker.');
+            }
+        });
 
         function handleCredentialResponse(response) {
             // Decode the JWT to get user info
